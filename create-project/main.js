@@ -1,6 +1,7 @@
 import './style.css'
 const DOMSelectors = {
     form: document.getElementById("form"),
+    inputEl: document.querySelectorAll(".input"), 
     inputs: Array.from(document.querySelectorAll(".input")), 
     scrambledWordDisplay: document.getElementById("scrambledWord"),
     results: document.getElementById("results")
@@ -29,7 +30,7 @@ function Guessing (){
         wrongAttempts = wrongAttempts +1; 
         counter(); 
     }
-    DOMSelectors.form.reset(); // <-- 
+    DOMSelectors.inputEl.forEach(el=>el.value =""); 
 }
 function counter() {
     document.getElementById("wrongAttempts").textContent = `Wrong Attempts: ${wrongAttempts}`;
