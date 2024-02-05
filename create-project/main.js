@@ -14,13 +14,6 @@ let ogWord;
 let scrambledWord;
 let wrongAttempts;
 
-function newGame(wordArray) {
-    ogWord = wordArray[Math.floor(Math.random() * wordArray.length)];
-    scrambledWord = ogWord.split('').sort(() => Math.random() - 0.5).join('');
-    DOMSelectors.scrambledWordDisplay.textContent = `Scrambled Word: ${scrambledWord}`;
-    wrongAttempts = 0;
-    counter();
-}
 
 function Guessing() {
     const guess = DOMSelectors.inputs.map(el => el.value).join('');
@@ -37,6 +30,14 @@ function Guessing() {
 function counter() {
     document.getElementById("wrongAttempts").textContent = `Wrong Attempts: ${wrongAttempts}`;
 }
+
+function newGame(wordArray) {
+    ogWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+    scrambledWord = ogWord.split('').sort(() => Math.random() - 0.5).join('');
+    DOMSelectors.scrambledWordDisplay.textContent = `Scrambled Word: ${scrambledWord}`;
+    wrongAttempts = 0;
+    counter();
+} 
 
 DOMSelectors.form.addEventListener("submit", function (event) {
     event.preventDefault();
